@@ -18,7 +18,7 @@ struct Movie: Codable, Identifiable {
 	let id: Int
 	let title: String
 	let overview: String
-	private let posterPath: String
+	private let posterPath: String?
 	private let backdropPath: String?
 	let originalTitle: String
 	let releaseDate: String
@@ -27,11 +27,13 @@ struct Movie: Codable, Identifiable {
 
 extension Movie {
 	var smallPosterUrl: URL? {
+		guard let posterPath else { return nil }
 		let urlsString = "https://image.tmdb.org/t/p/w200\(posterPath)"
 		return URL(string: urlsString)
 	}
 
 	var largePosterUrl: URL? {
+		guard let posterPath else { return nil }
 		let urlsString = "https://image.tmdb.org/t/p/w500\(posterPath)"
 		return URL(string: urlsString)
 	}

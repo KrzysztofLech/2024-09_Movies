@@ -3,8 +3,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct MainView: View {
 	@ObservedObject private var viewModel: MainViewModel
 

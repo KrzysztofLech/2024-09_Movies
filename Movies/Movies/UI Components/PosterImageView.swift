@@ -18,6 +18,7 @@ struct PosterImageView: View {
 					image
 						.resizable()
 						.aspectRatio(contentMode: .fill)
+						.frame(width: width)
 				} else if phase.error != nil {
 					placeholderView
 				} else {
@@ -28,7 +29,6 @@ struct PosterImageView: View {
 			}
 		)
 		.frame(height: width * imageAspectRatio)
-		.clipped()
 	}
 
 	private var placeholderView: some View {

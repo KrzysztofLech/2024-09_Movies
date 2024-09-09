@@ -5,8 +5,8 @@ import SwiftUI
 
 struct MovieDetailsView: View {
 
-	let movie: Movie
 	@Environment(\.dismiss) private var dismiss
+	let movie: Movie
 
 	var body: some View {
 		ZStack(alignment: .topLeading) {
@@ -28,6 +28,7 @@ struct MovieDetailsView: View {
 				VStack(alignment: .center, spacing: 8) {
 					Text(movie.title)
 						.font(.title)
+						.multilineTextAlignment(.center)
 
 					Rectangle().fill(.text)
 						.frame(height: 1)
