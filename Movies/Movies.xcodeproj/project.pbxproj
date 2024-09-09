@@ -95,8 +95,11 @@
 			isa = PBXGroup;
 			children = (
 				6B8E5B7F2C8EBE2000DAD9DD /* MoviesApp.swift */,
-				6B8E5B812C8EBE2000DAD9DD /* ContentView.swift */,
-				6B8E5B832C8EBE2100DAD9DD /* Assets.xcassets */,
+				6B8E5BA92C8EBF6100DAD9DD /* Views */,
+				6B8E5BAA2C8EBF8000DAD9DD /* UI Components */,
+				6B8E5BAB2C8EBF8F00DAD9DD /* Services */,
+				6B8E5BAC2C8EBF9D00DAD9DD /* Models */,
+				6B8E5BAD2C8EBFAD00DAD9DD /* Resources */,
 				6B8E5B852C8EBE2100DAD9DD /* Preview Content */,
 			);
 			path = Movies;
@@ -125,6 +128,43 @@
 				6B8E5B9C2C8EBE2100DAD9DD /* MoviesUITestsLaunchTests.swift */,
 			);
 			path = MoviesUITests;
+			sourceTree = "<group>";
+		};
+		6B8E5BA92C8EBF6100DAD9DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6B8E5B812C8EBE2000DAD9DD /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6B8E5BAA2C8EBF8000DAD9DD /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "UI Components";
+			sourceTree = "<group>";
+		};
+		6B8E5BAB2C8EBF8F00DAD9DD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6B8E5BAC2C8EBF9D00DAD9DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6B8E5BAD2C8EBFAD00DAD9DD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6B8E5B832C8EBE2100DAD9DD /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
