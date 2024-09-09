@@ -30,8 +30,15 @@ struct MainView: View {
 			}
 			.navigationTitle(Strings.navigationBarTitle)
 		}
+
 		.task {
 			await viewModel.fetchMoviesInCinemasData()
+		}
+
+		.alert(Strings.Alert.title, isPresented: $viewModel.showAlert) {
+			Button(Strings.Alert.buttonTitle, role: .cancel) {
+				viewModel.onTryAgain()
+			}
 		}
 	}
 

@@ -8,6 +8,7 @@ final class MainViewModel: ObservableObject {
 	private let dataService: DataServiceProtocol
 	@MainActor @Published private(set) var isDataLoading: Bool = true
 	@MainActor @Published private(set) var movies: [Movie] = []
+	@MainActor @Published var showAlert: Bool = false
 
 	init(dataService: DataServiceProtocol) {
 		self.dataService = dataService
@@ -24,7 +25,14 @@ final class MainViewModel: ObservableObject {
 		} catch {
 			if let error = error as? NetworkingError {
 				print("❗️", error.errorDescription)
+				await MainActor.run { showAlert = true }
 			}
+		}
+	}
+
+	func onTryAgain() {
+		Task {
+			await fetchMoviesInCinemasData()
 		}
 	}
 }
