@@ -38,9 +38,15 @@ final class DataService: DataServiceProtocol {
 		}
 	}
 
-	private func getUrlRequestFor(_ dataType: MoviesDataType, andLanguage language: Language, region: Region) -> URLRequest? {
-		let fullUrlString = dataType.path + "?language=\(language.code)&region=\(region)&page=1"			//// page !!!!
-		guard let url = URL(string: fullUrlString) else { return nil }
+	private func getUrlRequestFor(_ dataType: MoviesDataType, andLanguage language: Language, region: Region, page: Int = 1) -> URLRequest? {
+		var urlComponents = URLComponents(string: dataType.path)
+		urlComponents?.queryItems = [
+			URLQueryItem(name: "language", value: language.code),
+			URLQueryItem(name: "region", value: region.code),
+			URLQueryItem(name: "page", value: String(page))
+		]
+
+		guard let url = urlComponents?.url else { return nil }
 
 		let headers = [
 			"accept": "application/json",
@@ -58,4 +64,3 @@ final class DataService: DataServiceProtocol {
 		return urlRequest
 	}
 }
-

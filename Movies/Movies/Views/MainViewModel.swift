@@ -5,10 +5,11 @@ import Foundation
 
 final class MainViewModel: ObservableObject {
 
-	private let dataService: DataServiceProtocol
 	@MainActor @Published private(set) var isDataLoading: Bool = true
-	@MainActor @Published private(set) var movies: [Movie] = []
 	@MainActor @Published var showAlert: Bool = false
+
+	private let dataService: DataServiceProtocol
+	private(set) var movies: [Movie] = []
 
 	init(dataService: DataServiceProtocol) {
 		self.dataService = dataService
@@ -17,7 +18,7 @@ final class MainViewModel: ObservableObject {
 	func fetchMoviesInCinemasData() async {
 		do {
 			let moviesData = try await dataService.getMoviesInCinemas()
-			print("🙂", moviesData.movies.count)
+			print("🙂", moviesData.movies.count)	//////// usunąć
 			await MainActor.run {
 				movies = moviesData.movies
 				isDataLoading = false
