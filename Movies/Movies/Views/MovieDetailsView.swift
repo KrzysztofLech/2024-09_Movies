@@ -4,11 +4,67 @@
 import SwiftUI
 
 struct MovieDetailsView: View {
-    var body: some View {
-        Text("Movie Details")
-    }
-}
 
-#Preview {
-    MovieDetailsView()
+	let movie: Movie
+	@Environment(\.dismiss) private var dismiss
+
+	var body: some View {
+		ZStack(alignment: .topLeading) {
+			detailsView
+			backButton
+		}
+		.navigationBarHidden(true)
+	}
+
+	private var detailsView: some View {
+		ScrollView(.vertical) {
+			VStack(alignment: .center, spacing: 16) {
+				PosterImageView(
+					imageUrl: movie.largePosterUrl,
+					title: movie.title,
+					width: UIScreen.main.bounds.width
+				)
+
+				VStack(alignment: .center, spacing: 8) {
+					Text(movie.title)
+						.font(.title)
+
+					Rectangle().fill(.text)
+						.frame(height: 1)
+						.padding(.horizontal, 80)
+
+					HStack {
+						Text(movie.releaseDate)
+						Image(systemName: "star.fill").scaleEffect(0.5)
+						Text(movie.voteAverage, format: .number.precision(.fractionLength(2)))
+					}
+					.font(.caption)
+
+					Text(movie.overview)
+						.font(.subheadline)
+						.multilineTextAlignment(.center)
+				}
+				.foregroundStyle(.text)
+				.padding(.horizontal, 16)
+			}
+		}
+		.ignoresSafeArea(edges: .top)
+	}
+
+	private var backButton: some View {
+		Button(
+			action: {
+				dismiss()
+			},
+			label: {
+				Image(systemName: "arrow.backward.circle.fill")
+					.resizable()
+					.foregroundColor(.light)
+					.shadow(color: .black, radius: 10, x: 0, y: 0)
+					.frame(width: 40, height: 40)
+			}
+		)
+		.frame(width: 48, height: 48)
+		.padding(.leading, 16)
+	}
 }
