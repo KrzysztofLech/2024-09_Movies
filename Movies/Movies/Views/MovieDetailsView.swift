@@ -25,6 +25,7 @@ struct MovieDetailsView: View {
 					width: UIScreen.main.bounds.width,
 					titleVisible: false
 				)
+				.shadow(color: .light.opacity(0.5), radius: 8, x: 0, y: 0)
 
 				VStack(alignment: .center, spacing: 8) {
 					Text(movie.title)
