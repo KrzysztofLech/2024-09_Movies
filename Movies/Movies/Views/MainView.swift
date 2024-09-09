@@ -49,7 +49,7 @@ struct MainView: View {
 				columns: [GridItem(.fixed(itemWidth), spacing: spacing), GridItem(.fixed(itemWidth))],
 				spacing: spacing,
 				content: {
-					ForEach(viewModel.movies) { movie in
+					ForEach(Array(viewModel.movies.enumerated()), id: \.offset) { index, movie in
 						NavigationLink(
 							destination: MovieDetailsView(movie: movie),
 							label: {
@@ -64,12 +64,24 @@ struct MainView: View {
 									RoundedRectangle(cornerRadius: 6)
 										.stroke(.light.opacity(0.5), lineWidth: 1)
 								}
+
+								.onAppear {
+									if index == viewModel.movies.count - 1 {
+										Task {
+											await viewModel.fetchMoviesInCinemasData()
+										}
+									}
+								}
 							}
 						)
 					}
 				}
 			)
 			.padding(.horizontal, 16)
+
+			if viewModel.showNextPageProgressView {
+				ProgressView()
+			}
 		}
 	}
 }

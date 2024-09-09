@@ -7,20 +7,26 @@ final class MainViewModel: ObservableObject {
 
 	@MainActor @Published private(set) var isDataLoading: Bool = true
 	@MainActor @Published var showAlert: Bool = false
-
-	private let dataService: DataServiceProtocol
 	private(set) var movies: [Movie] = []
+	
+	private let dataService: DataServiceProtocol
 
 	init(dataService: DataServiceProtocol) {
 		self.dataService = dataService
 	}
 
+	var showNextPageProgressView: Bool {
+		dataService.morePagesAvailable
+	}
+
 	func fetchMoviesInCinemasData() async {
+		guard dataService.morePagesAvailable else { return }
+
 		do {
 			let moviesData = try await dataService.getMoviesInCinemas()
 			print("🙂", moviesData.movies.count)	//////// usunąć
 			await MainActor.run {
-				movies = moviesData.movies
+				movies.append(contentsOf: moviesData.movies)
 				isDataLoading = false
 			}
 		} catch {
