@@ -56,7 +56,8 @@ struct MainView: View {
 								PosterImageView(
 									imageUrl: movie.smallPosterUrl,
 									title: movie.title,
-									width: itemWidth
+									width: itemWidth,
+									titleVisible: true
 								)
 								.cornerRadius(6)
 								.shadow(color: .light.opacity(0.5), radius: 8, x: 0, y: 0)

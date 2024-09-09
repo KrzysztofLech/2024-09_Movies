@@ -22,7 +22,8 @@ struct MovieDetailsView: View {
 				PosterImageView(
 					imageUrl: movie.largePosterUrl,
 					title: movie.title,
-					width: UIScreen.main.bounds.width
+					width: UIScreen.main.bounds.width,
+					titleVisible: false
 				)
 
 				VStack(alignment: .center, spacing: 8) {
