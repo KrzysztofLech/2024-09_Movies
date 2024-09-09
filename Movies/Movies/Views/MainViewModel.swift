@@ -24,14 +24,15 @@ final class MainViewModel: ObservableObject {
 
 		do {
 			let moviesData = try await dataService.getMoviesInCinemas()
-			print("🙂", moviesData.movies.count)	//////// usunąć
+			Logger.log(okText: "Downloaded \(moviesData.movies.count) 'Movies in cinemas'")
+
 			await MainActor.run {
 				movies.append(contentsOf: moviesData.movies)
 				isDataLoading = false
 			}
 		} catch {
 			if let error = error as? NetworkingError {
-				print("❗️", error.errorDescription)
+				Logger.log(error: error.errorDescription)
 				await MainActor.run { showAlert = true }
 			}
 		}
