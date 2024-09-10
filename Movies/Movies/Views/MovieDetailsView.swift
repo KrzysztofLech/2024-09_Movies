@@ -6,12 +6,25 @@ import SwiftUI
 struct MovieDetailsView: View {
 
 	@Environment(\.dismiss) private var dismiss
-	let movie: Movie
+	private let movie: Movie
+	@State private var isFavourite: Bool
+	private let changeFavoriteAction: () -> Void
+
+	init(movie: Movie, changeFavoriteAction: @escaping () -> Void) {
+		self.movie = movie
+		self.isFavourite = movie.favorite
+		self.changeFavoriteAction = changeFavoriteAction
+	}
 
 	var body: some View {
 		ZStack(alignment: .topLeading) {
 			detailsView
-			backButton
+			
+			HStack {
+				backButton
+				Spacer()
+				favoriteButton
+			}
 		}
 		.navigationBarHidden(true)
 	}
@@ -69,5 +82,19 @@ struct MovieDetailsView: View {
 		)
 		.frame(width: 48, height: 48)
 		.padding(.leading, 16)
+	}
+
+	private var favoriteButton: some View {
+		Button(
+			action: {
+				isFavourite.toggle()
+				changeFavoriteAction()
+			},
+			label: {
+				FavoriteIcon(isFavourite: isFavourite, size: 40)
+			}
+		)
+		.frame(width: 48, height: 48)
+		.padding(.trailing, 16)
 	}
 }

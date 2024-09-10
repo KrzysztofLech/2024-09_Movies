@@ -3,7 +3,7 @@
 
 import Foundation
 
-struct Movie: Codable, Identifiable {
+struct Movie: Codable {
 	private enum CodingKeys: String, CodingKey {
 		case id
 		case title
@@ -23,6 +23,8 @@ struct Movie: Codable, Identifiable {
 	let originalTitle: String
 	let releaseDate: String
 	let voteAverage: Double
+
+	var favorite: Bool = false
 }
 
 extension Movie {

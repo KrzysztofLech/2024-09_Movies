@@ -28,6 +28,7 @@
 		6B8E5BC72C8EC4C300DAD9DD /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BC62C8EC4C300DAD9DD /* Strings.swift */; };
 		6B8E5BC92C8EC4F300DAD9DD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B8E5BC82C8EC4F300DAD9DD /* Colors.xcassets */; };
 		6B8E5BCB2C8F5DAD00DAD9DD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BCA2C8F5DAD00DAD9DD /* Logger.swift */; };
+		6B8E5BCD2C8F986D00DAD9DD /* FavoriteIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BCC2C8F986D00DAD9DD /* FavoriteIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		6B8E5BC62C8EC4C300DAD9DD /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		6B8E5BC82C8EC4F300DAD9DD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6B8E5BCA2C8F5DAD00DAD9DD /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		6B8E5BCC2C8F986D00DAD9DD /* FavoriteIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				6B8E5BC22C8EC45800DAD9DD /* DataLoadingView.swift */,
 				6B8E5BC42C8EC48000DAD9DD /* PosterImageView.swift */,
+				6B8E5BCC2C8F986D00DAD9DD /* FavoriteIcon.swift */,
 			);
 			path = "UI Components";
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				6B8E5BC32C8EC45800DAD9DD /* DataLoadingView.swift in Sources */,
 				6B8E5BB92C8EC2B800DAD9DD /* Region.swift in Sources */,
 				6B8E5BCB2C8F5DAD00DAD9DD /* Logger.swift in Sources */,
+				6B8E5BCD2C8F986D00DAD9DD /* FavoriteIcon.swift in Sources */,
 				6B8E5BBB2C8EC2D500DAD9DD /* Language.swift in Sources */,
 				6B8E5BB72C8EC29200DAD9DD /* NetworkingError.swift in Sources */,
 				6B8E5BC52C8EC48000DAD9DD /* PosterImageView.swift in Sources */,

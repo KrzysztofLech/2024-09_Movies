@@ -16,7 +16,7 @@ final class DataService: DataServiceProtocol {
 
 	func getMoviesInCinemas() async throws -> Movies {
 		try await getMoviesData(.nowInCinemas, language: .pl, region: .pl)
-		// try await getMoviesData(.nowInCinemas, language: .us, region: .us)
+//		try await getMoviesData(.nowInCinemas, language: .us, region: .us)
 	}
 
 	private func getMoviesData(_ dataType: MoviesDataType, language: Language, region: Region) async throws -> Movies {

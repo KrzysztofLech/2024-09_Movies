@@ -7,12 +7,21 @@ final class MainViewModel: ObservableObject {
 
 	@MainActor @Published private(set) var isDataLoading: Bool = true
 	@MainActor @Published var showAlert: Bool = false
-	private(set) var movies: [Movie] = []
-	
+	@Published private(set) var movies: [Movie] = []
+
 	private let dataService: DataServiceProtocol
+	private var allMoviesCount: Int = 0
 
 	init(dataService: DataServiceProtocol) {
 		self.dataService = dataService
+	}
+
+	var navigationBarTitle: String {
+		var title = Strings.navigationBarTitle
+		if allMoviesCount > 0 {
+			title += String(format: " (%i/%i)", movies.count, allMoviesCount)
+		}
+		return title
 	}
 
 	var showNextPageProgressView: Bool {
@@ -20,14 +29,13 @@ final class MainViewModel: ObservableObject {
 	}
 
 	func fetchMoviesInCinemasData() async {
-		guard dataService.morePagesAvailable else { return }
-
 		do {
 			let moviesData = try await dataService.getMoviesInCinemas()
 			Logger.log(okText: "Downloaded \(moviesData.movies.count) 'Movies in cinemas'")
 
 			await MainActor.run {
 				movies.append(contentsOf: moviesData.movies)
+				allMoviesCount = moviesData.totalResults
 				isDataLoading = false
 			}
 		} catch {
@@ -42,6 +50,21 @@ final class MainViewModel: ObservableObject {
 		Task {
 			await fetchMoviesInCinemasData()
 		}
+	}
+
+	func loadNextPageDataIfNeeded(atIndex index: Int) {
+		guard
+			index == movies.count - 1,
+			dataService.morePagesAvailable
+		else { return }
+
+		Task {
+			await fetchMoviesInCinemasData()
+		}
+	}
+
+	func favoriteChanged(atIndex index: Int) {
+		movies[index].favorite.toggle()
 	}
 }
 
