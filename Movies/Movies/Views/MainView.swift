@@ -104,6 +104,13 @@ struct MainView: View {
 }
 
 #Preview {
-	MainView(viewModel: MainViewModel(dataService: DataService()))
-		.preferredColorScheme(.dark)
+	MainView(
+		viewModel: MainViewModel(
+			dataService: DataService(
+				remoteDataService: RemoteDataService(),
+				localDataService: LocalDataService()
+			)
+		)
+	)
+	.preferredColorScheme(.dark)
 }

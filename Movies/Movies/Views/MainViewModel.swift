@@ -65,6 +65,7 @@ final class MainViewModel: ObservableObject {
 
 	func favoriteChanged(atIndex index: Int) {
 		movies[index].favorite.toggle()
+		dataService.saveFavoriteMovies(movies)
 	}
 }
 

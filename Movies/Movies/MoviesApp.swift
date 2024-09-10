@@ -7,8 +7,11 @@ import SwiftUI
 struct MoviesApp: App {
 	var body: some Scene {
 		WindowGroup {
-			let dataService = DataService()
+			let remoteDataService = RemoteDataService()
+			let localDataService = LocalDataService()
+			let dataService = DataService(remoteDataService: remoteDataService, localDataService: localDataService)
 			let mainViewModel = MainViewModel(dataService: dataService)
+			
 			MainView(viewModel: mainViewModel)
 				.preferredColorScheme(.dark)
 		}

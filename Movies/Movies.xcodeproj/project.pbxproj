@@ -29,6 +29,8 @@
 		6B8E5BC92C8EC4F300DAD9DD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B8E5BC82C8EC4F300DAD9DD /* Colors.xcassets */; };
 		6B8E5BCB2C8F5DAD00DAD9DD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BCA2C8F5DAD00DAD9DD /* Logger.swift */; };
 		6B8E5BCD2C8F986D00DAD9DD /* FavoriteIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BCC2C8F986D00DAD9DD /* FavoriteIcon.swift */; };
+		6B8E5BCF2C9057AE00DAD9DD /* LocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BCE2C9057AE00DAD9DD /* LocalDataService.swift */; };
+		6B8E5BD12C9065DB00DAD9DD /* RemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BD02C9065DB00DAD9DD /* RemoteDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		6B8E5BC82C8EC4F300DAD9DD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6B8E5BCA2C8F5DAD00DAD9DD /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		6B8E5BCC2C8F986D00DAD9DD /* FavoriteIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteIcon.swift; sourceTree = "<group>"; };
+		6B8E5BCE2C9057AE00DAD9DD /* LocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataService.swift; sourceTree = "<group>"; };
+		6B8E5BD02C9065DB00DAD9DD /* RemoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				6B8E5BB42C8EC24D00DAD9DD /* DataService.swift */,
+				6B8E5BD02C9065DB00DAD9DD /* RemoteDataService.swift */,
+				6B8E5BCE2C9057AE00DAD9DD /* LocalDataService.swift */,
 				6B8E5BCA2C8F5DAD00DAD9DD /* Logger.swift */,
 			);
 			path = Services;
@@ -346,10 +352,12 @@
 				6B8E5BB12C8EC0D200DAD9DD /* MainView.swift in Sources */,
 				6B8E5BC12C8EC37B00DAD9DD /* Movies.swift in Sources */,
 				6B8E5B802C8EBE2000DAD9DD /* MoviesApp.swift in Sources */,
+				6B8E5BD12C9065DB00DAD9DD /* RemoteDataService.swift in Sources */,
 				6B8E5BBD2C8EC30E00DAD9DD /* MoviesDataType.swift in Sources */,
 				6B8E5BB32C8EC1F400DAD9DD /* MovieDetailsView.swift in Sources */,
 				6B8E5BBF2C8EC33900DAD9DD /* Movie.swift in Sources */,
 				6B8E5BC72C8EC4C300DAD9DD /* Strings.swift in Sources */,
+				6B8E5BCF2C9057AE00DAD9DD /* LocalDataService.swift in Sources */,
 				6B8E5BAF2C8EC07700DAD9DD /* MainViewModel.swift in Sources */,
 				6B8E5BC32C8EC45800DAD9DD /* DataLoadingView.swift in Sources */,
 				6B8E5BB92C8EC2B800DAD9DD /* Region.swift in Sources */,
