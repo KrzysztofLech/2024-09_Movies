@@ -39,7 +39,8 @@ final class DataService: DataServiceProtocol {
 	}
 
 	func searchMovie(withText text: String) async throws -> Movies {
-		try await remoteDataService.getMoviesData(.search(text), language: .pl, region: .pl)
+		let encodedString = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+		return try await remoteDataService.getMoviesData(.search(encodedString), language: .pl, region: .pl)
 	}
 
 	func saveFavoriteMovies(_ movies: [Movie]) {
