@@ -3,7 +3,7 @@
 
 import Foundation
 
-struct Movie: Codable {
+struct Movie: Codable, Identifiable {
 	private enum CodingKeys: String, CodingKey {
 		case id
 		case title

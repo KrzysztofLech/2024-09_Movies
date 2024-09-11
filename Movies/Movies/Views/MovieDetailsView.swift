@@ -8,9 +8,13 @@ struct MovieDetailsView: View {
 	@Environment(\.dismiss) private var dismiss
 	private let movie: Movie
 	@State private var isFavourite: Bool
-	private let changeFavoriteAction: () -> Void
+	private let changeFavoriteAction: (() -> Void)?
 
-	init(movie: Movie, changeFavoriteAction: @escaping () -> Void) {
+	private var isFavoriteButtonVisible: Bool {
+		changeFavoriteAction != nil
+	}
+
+	init(movie: Movie, changeFavoriteAction: (() -> Void)?) {
 		self.movie = movie
 		self.isFavourite = movie.favorite
 		self.changeFavoriteAction = changeFavoriteAction
@@ -23,7 +27,7 @@ struct MovieDetailsView: View {
 			HStack {
 				backButton
 				Spacer()
-				favoriteButton
+				if isFavoriteButtonVisible { favoriteButton }
 			}
 		}
 		.navigationBarHidden(true)
@@ -88,7 +92,7 @@ struct MovieDetailsView: View {
 		Button(
 			action: {
 				isFavourite.toggle()
-				changeFavoriteAction()
+				changeFavoriteAction?()
 			},
 			label: {
 				FavoriteIcon(isFavourite: isFavourite, size: 40)

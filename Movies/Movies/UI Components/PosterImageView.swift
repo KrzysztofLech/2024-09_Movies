@@ -33,7 +33,7 @@ struct PosterImageView: View {
 			.frame(height: width * imageAspectRatio)
 		} else {
 			placeholderView
-				.frame(height: titleVisible ? width * imageAspectRatio : width)
+				.frame(width: width, height: titleVisible ? width * imageAspectRatio : width)
 		}
 	}
 

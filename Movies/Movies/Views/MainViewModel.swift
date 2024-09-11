@@ -1,20 +1,22 @@
 //  MainViewModel.swift
 //  Created by Krzysztof Lech on 09/09/2024.
 
+import Combine
 import Foundation
 
 final class MainViewModel: ObservableObject {
 
-	@MainActor @Published private(set) var isDataLoading: Bool = true
-	@MainActor @Published var showAlert: Bool = false
-	@Published private(set) var movies: [Movie] = []
-
 	private let dataService: DataServiceProtocol
+	private var cancellables = Set<AnyCancellable>()
 	private var allMoviesCount: Int = 0
 
-	init(dataService: DataServiceProtocol) {
-		self.dataService = dataService
-	}
+	@Published private(set) var isDataLoading: Bool = true
+	@Published var showAlert: Bool = false
+	@Published private(set) var movies: [Movie] = []
+
+	@Published var searchText = ""
+	@Published private(set) var isSearchActive = false
+	@Published private(set) var searchMovies: [Movie] = []
 
 	var navigationBarTitle: String {
 		var title = Strings.navigationBarTitle
@@ -26,6 +28,22 @@ final class MainViewModel: ObservableObject {
 
 	var showNextPageProgressView: Bool {
 		dataService.morePagesAvailable
+	}
+
+	init(dataService: DataServiceProtocol) {
+		self.dataService = dataService
+
+		setupSearch()
+	}
+
+	private func setupSearch() {
+		$searchText
+			.debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+			.sink { text in
+				self.isSearchActive = !text.isEmpty
+				self.searchMovie(withText: text)
+			}
+			.store(in: &cancellables)
 	}
 
 	func fetchMoviesInCinemasData() async {
@@ -42,6 +60,28 @@ final class MainViewModel: ObservableObject {
 			if let error = error as? NetworkingError {
 				Logger.log(error: error.errorDescription)
 				await MainActor.run { showAlert = true }
+			}
+		}
+	}
+
+	private func searchMovie(withText text: String) {
+		guard !text.isEmpty else {
+			searchMovies = []
+			return
+		}
+
+		Task {
+			do {
+				let moviesData = try await dataService.searchMovie(withText: text)
+				Logger.log(okText: "Searched \(moviesData.movies.count) movies")
+				await MainActor.run {
+					searchMovies = moviesData.movies
+				}
+			} catch {
+				if let error = error as? NetworkingError {
+					Logger.log(error: error.errorDescription)
+					await MainActor.run { showAlert = true }
+				}
 			}
 		}
 	}

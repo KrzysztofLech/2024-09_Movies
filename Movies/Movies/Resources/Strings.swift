@@ -6,6 +6,7 @@ import Foundation
 enum Strings {
 	static let progressViewLabel = "Loading ..."
 	static let navigationBarTitle = "Movies"
+	static let searchPrompt = "Search movie"
 
 	enum Alert {
 		static let title = "An error occurred"

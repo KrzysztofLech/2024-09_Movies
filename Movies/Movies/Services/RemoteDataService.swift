@@ -19,6 +19,8 @@ final class RemoteDataService: RemoteDataServiceProtocol {
 			throw NetworkingError.invalidRequest
 		}
 
+		Logger.log(info: "Request: \(urlRequest)")
+
 		let session = URLSession.shared
 		guard
 			let (data, response) = try? await session.data(for: urlRequest),
@@ -43,11 +45,21 @@ final class RemoteDataService: RemoteDataServiceProtocol {
 
 	private func getUrlRequestFor(_ dataType: MoviesDataType, andLanguage language: Language, region: Region) -> URLRequest? {
 		var urlComponents = URLComponents(string: dataType.path)
-		urlComponents?.queryItems = [
-			URLQueryItem(name: "language", value: language.code),
-			URLQueryItem(name: "region", value: region.code),
-			URLQueryItem(name: "page", value: String(currentPage + 1))
-		]
+
+		switch dataType {
+		case .nowInCinemas:
+			urlComponents?.queryItems = [
+				URLQueryItem(name: "language", value: language.code),
+				URLQueryItem(name: "region", value: region.code),
+				URLQueryItem(name: "page", value: String(currentPage + 1)),
+			]
+
+		case .search(let text):
+			urlComponents?.queryItems = [
+				URLQueryItem(name: "query", value: text),
+				URLQueryItem(name: "language", value: language.code)
+			]
+		}
 
 		guard let url = urlComponents?.url else { return nil }
 
@@ -67,3 +79,4 @@ final class RemoteDataService: RemoteDataServiceProtocol {
 		return urlRequest
 	}
 }
+// https://api.themoviedb.org/3/search/movie?query=rambo%203&include_adult=false&language=en-US&page=1

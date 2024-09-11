@@ -6,6 +6,7 @@ import Foundation
 protocol DataServiceProtocol {
 	var morePagesAvailable: Bool { get }
 	func getMoviesInCinemas() async throws -> Movies
+	func searchMovie(withText text: String) async throws -> Movies
 	func saveFavoriteMovies(_ movies: [Movie])
 }
 
@@ -25,7 +26,6 @@ final class DataService: DataServiceProtocol {
 
 	func getMoviesInCinemas() async throws -> Movies {
 		var moviesData = try await remoteDataService.getMoviesData(.nowInCinemas, language: .pl, region: .pl)
-//		var moviesData = try await remoteDataService.getMoviesData(.nowInCinemas, language: .us, region: .us)
 
 		let favoriteMovieIds = localDataService.favoriteMovieIds
 
@@ -36,6 +36,10 @@ final class DataService: DataServiceProtocol {
 		}
 
 		return moviesData
+	}
+
+	func searchMovie(withText text: String) async throws -> Movies {
+		try await remoteDataService.getMoviesData(.search(text), language: .pl, region: .pl)
 	}
 
 	func saveFavoriteMovies(_ movies: [Movie]) {
