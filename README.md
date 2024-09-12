@@ -18,3 +18,5 @@ wyświetlone szczegóły filmu.
 * język: Swift
 * aplikacja powinna uruchamiać się na symulatorze oraz dowolnym iPhone z iOS 15 i wyżej
 * UI wg własnego uznania, napisane w UIKit / SwiftUI
+
+![](Screenshots.jpg)
