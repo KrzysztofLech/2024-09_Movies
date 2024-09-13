@@ -108,4 +108,3 @@ final class MainViewModel: ObservableObject {
 		dataService.saveFavoriteMovies(movies)
 	}
 }
-

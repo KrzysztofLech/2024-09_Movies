@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B1B12572C94583B00206C54 /* RemoteDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12562C94583B00206C54 /* RemoteDataServiceTests.swift */; };
+		6B1B12592C94673A00206C54 /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12582C94673A00206C54 /* DataServiceTests.swift */; };
+		6B1B125B2C94724800206C54 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B125A2C94724800206C54 /* MainViewModelTests.swift */; };
 		6B8E5B802C8EBE2000DAD9DD /* MoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5B7F2C8EBE2000DAD9DD /* MoviesApp.swift */; };
 		6B8E5B842C8EBE2100DAD9DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B8E5B832C8EBE2100DAD9DD /* Assets.xcassets */; };
 		6B8E5B872C8EBE2100DAD9DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B8E5B862C8EBE2100DAD9DD /* Preview Assets.xcassets */; };
-		6B8E5B912C8EBE2100DAD9DD /* MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5B902C8EBE2100DAD9DD /* MoviesTests.swift */; };
 		6B8E5B9B2C8EBE2100DAD9DD /* MoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5B9A2C8EBE2100DAD9DD /* MoviesUITests.swift */; };
 		6B8E5B9D2C8EBE2100DAD9DD /* MoviesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5B9C2C8EBE2100DAD9DD /* MoviesUITestsLaunchTests.swift */; };
 		6B8E5BAF2C8EC07700DAD9DD /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BAE2C8EC07700DAD9DD /* MainViewModel.swift */; };
@@ -33,6 +35,7 @@
 		6B8E5BD12C9065DB00DAD9DD /* RemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BD02C9065DB00DAD9DD /* RemoteDataService.swift */; };
 		6B8E5BD42C920C2B00DAD9DD /* SearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BD32C920C2B00DAD9DD /* SearchList.swift */; };
 		6B8E5BD62C920D3500DAD9DD /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E5BD52C920D3500DAD9DD /* GridView.swift */; };
+		6BF22C052C9366FE00DDB064 /* LocalDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF22C042C9366FE00DDB064 /* LocalDataServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,12 +56,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B1B12562C94583B00206C54 /* RemoteDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataServiceTests.swift; sourceTree = "<group>"; };
+		6B1B12582C94673A00206C54 /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
+		6B1B125A2C94724800206C54 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		6B8E5B7C2C8EBE2000DAD9DD /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B8E5B7F2C8EBE2000DAD9DD /* MoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApp.swift; sourceTree = "<group>"; };
 		6B8E5B832C8EBE2100DAD9DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B8E5B862C8EBE2100DAD9DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6B8E5B8C2C8EBE2100DAD9DD /* MoviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B8E5B902C8EBE2100DAD9DD /* MoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTests.swift; sourceTree = "<group>"; };
 		6B8E5B962C8EBE2100DAD9DD /* MoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B8E5B9A2C8EBE2100DAD9DD /* MoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUITests.swift; sourceTree = "<group>"; };
 		6B8E5B9C2C8EBE2100DAD9DD /* MoviesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -82,6 +87,7 @@
 		6B8E5BD02C9065DB00DAD9DD /* RemoteDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataService.swift; sourceTree = "<group>"; };
 		6B8E5BD32C920C2B00DAD9DD /* SearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchList.swift; sourceTree = "<group>"; };
 		6B8E5BD52C920D3500DAD9DD /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		6BF22C042C9366FE00DDB064 /* LocalDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +160,10 @@
 		6B8E5B8F2C8EBE2100DAD9DD /* MoviesTests */ = {
 			isa = PBXGroup;
 			children = (
-				6B8E5B902C8EBE2100DAD9DD /* MoviesTests.swift */,
+				6BF22C042C9366FE00DDB064 /* LocalDataServiceTests.swift */,
+				6B1B12562C94583B00206C54 /* RemoteDataServiceTests.swift */,
+				6B1B12582C94673A00206C54 /* DataServiceTests.swift */,
+				6B1B125A2C94724800206C54 /* MainViewModelTests.swift */,
 			);
 			path = MoviesTests;
 			sourceTree = "<group>";
@@ -390,7 +399,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B8E5B912C8EBE2100DAD9DD /* MoviesTests.swift in Sources */,
+				6B1B12592C94673A00206C54 /* DataServiceTests.swift in Sources */,
+				6BF22C052C9366FE00DDB064 /* LocalDataServiceTests.swift in Sources */,
+				6B1B12572C94583B00206C54 /* RemoteDataServiceTests.swift in Sources */,
+				6B1B125B2C94724800206C54 /* MainViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

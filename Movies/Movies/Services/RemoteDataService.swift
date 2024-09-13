@@ -3,16 +3,27 @@
 
 import Foundation
 
+protocol URLSessionProtocol {
+	func data(for request: URLRequest) async throws -> (Data, URLResponse)
+}
+
+extension URLSession: URLSessionProtocol {}
+
 protocol RemoteDataServiceProtocol {
 	var morePagesAvailable: Bool { get }
 	func getMoviesData(_ dataType: MoviesDataType, language: Language, region: Region) async throws -> Movies
 }
 
 final class RemoteDataService: RemoteDataServiceProtocol {
+	private let session: URLSessionProtocol
 	private let token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3YjllODZmNzNkMzJhMmNkNTIwYjhjNzU3ZmU4N2MzYiIsInN1YiI6IjY0ZTFhMjUyNGE1MmY4MDEzYmQzZTUzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7-WFMTGY1C2Tq5XKMvMNVAwZF7U-JZkrgkZkM4qRf_A"
 	private var currentPage = 0
 
 	var morePagesAvailable: Bool = true
+
+	init(session: URLSessionProtocol = URLSession.shared) {
+		self.session = session
+	}
 
 	func getMoviesData(_ dataType: MoviesDataType, language: Language, region: Region) async throws -> Movies {
 		guard let urlRequest = getUrlRequestFor(dataType, andLanguage: language, region: region) else {
@@ -21,7 +32,6 @@ final class RemoteDataService: RemoteDataServiceProtocol {
 
 		Logger.log(info: "Request: \(urlRequest)")
 
-		let session = URLSession.shared
 		guard
 			let (data, response) = try? await session.data(for: urlRequest),
 			let httpResponse = response as? HTTPURLResponse,
@@ -79,4 +89,3 @@ final class RemoteDataService: RemoteDataServiceProtocol {
 		return urlRequest
 	}
 }
-// https://api.themoviedb.org/3/search/movie?query=rambo%203&include_adult=false&language=en-US&page=1

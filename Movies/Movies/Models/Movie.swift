@@ -25,6 +25,28 @@ struct Movie: Codable, Identifiable {
 	let voteAverage: Double
 
 	var favorite: Bool = false
+
+	init(
+		id: Int,
+		title: String,
+		overview: String,
+		posterPath: String?,
+		backdropPath: String?,
+		originalTitle: String,
+		releaseDate: String,
+		voteAverage: Double,
+		favorite: Bool
+	) {
+		self.id = id
+		self.title = title
+		self.overview = overview
+		self.posterPath = posterPath
+		self.backdropPath = backdropPath
+		self.originalTitle = originalTitle
+		self.releaseDate = releaseDate
+		self.voteAverage = voteAverage
+		self.favorite = favorite
+	}
 }
 
 extension Movie {
