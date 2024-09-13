@@ -9,7 +9,7 @@ protocol LocalDataServiceProtocol {
 
 struct LocalDataService: LocalDataServiceProtocol {
 
-	private let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("numbers.txt")
+	private let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("favorites.txt")
 
 	var favoriteMovieIds: [Int] {
 		get {
